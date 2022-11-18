@@ -71,6 +71,7 @@ struct MovieListView: View {
                 
                 
             }
+
         }
         .onAppear {
             self.nowPlayingState.loadMovies(with: .nowPlaying)
