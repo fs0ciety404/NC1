@@ -22,11 +22,7 @@ class MovieStore: MovieService {
             completion(.failure(.invalidEndpoint))
             return
         }
-        self.loadURLAndDecode(url: url, params: [
-            "append_to_response": "videos,credits",
-            "language": "it",
-            "region": "it"
-        ], completion: completion)
+        self.loadURLAndDecode(url: url, completion: completion)
     }
     
     func fetchMovie(id: Int, completion: @escaping (Result<Movie, MovieError>) -> ()) {
@@ -37,7 +33,6 @@ class MovieStore: MovieService {
         self.loadURLAndDecode(url: url, params: [
             "append_to_response": "videos,credits",
             "language": "it",
-            "region": "it"
         ], completion: completion)
     }
     
