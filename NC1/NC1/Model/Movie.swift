@@ -99,15 +99,15 @@ struct Movie: Decodable, Identifiable, Hashable {
     }
     
     var directors: [MovieCrew]? {
-        crew?.filter { $0.job.lowercased() == "director" }
+        crew?.filter { $0.job.lowercased() == "regista" }
     }
     
     var producers: [MovieCrew]? {
-        crew?.filter { $0.job.lowercased() == "producer" }
+        crew?.filter { $0.job.lowercased() == "produttore" }
     }
     
     var screenWriters: [MovieCrew]? {
-        crew?.filter { $0.job.lowercased() == "story" }
+        crew?.filter { $0.job.lowercased() == "storia" }
     }
     
     var youtubeTrailers: [MovieVideo]? {
