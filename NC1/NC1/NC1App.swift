@@ -11,15 +11,25 @@ import SwiftUI
 struct NC1App: App {
     var body: some Scene {
         WindowGroup {
-            TabView{
-                SerieTvView()
+            TabView {
+                MovieListView()
                     .tabItem {
-                        Label("Serie Tv", systemImage: "tv")
+                        VStack {
+                            Image(systemName: "tv")
+                            Text("Movies")
+                        }
                     }
-                FilmView()
+                    .tag(0)
+                
+                MovieSearchView()
                     .tabItem {
-                        Label("Film", systemImage: "film")
+                        VStack {
+                            Image(systemName: "magnifyingglass")
+                            Text("Search")
+                        }
                     }
+                    .tag(1)
+                
             }
             
         }

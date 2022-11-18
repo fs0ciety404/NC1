@@ -16,6 +16,7 @@ class MovieStore: MovieService {
     private let baseAPIURL = "https://api.themoviedb.org/3"
     private let urlSession = URLSession.shared
     private let jsonDecoder = Utils.jsonDecoder
+    private let lang = "?language=it"
     
     func fetchMovies(from endpoint: MovieListEndpoint, completion: @escaping (Result<MovieResponse, MovieError>) -> ()) {
         guard let url = URL(string: "\(baseAPIURL)/movie/\(endpoint.rawValue)") else {
@@ -36,14 +37,14 @@ class MovieStore: MovieService {
     }
     
     func searchMovie(query: String, completion: @escaping (Result<MovieResponse, MovieError>) -> ()) {
-        guard let url = URL(string: "\(baseAPIURL)/search/movie") else {
+        guard let url = URL(string: "\(baseAPIURL)/search/movie?language=it") else {
             completion(.failure(.invalidEndpoint))
             return
         }
         self.loadURLAndDecode(url: url, params: [
-            "language": "en-US",
+            "language": "it-IT",
             "include_adult": "false",
-            "region": "US",
+            "region": "IT",
             "query": query
         ], completion: completion)
     }
