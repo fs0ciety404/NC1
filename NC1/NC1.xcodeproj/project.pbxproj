@@ -99,8 +99,8 @@
 				238CA60329269A7B0009442F /* Utils.swift */,
 				238CA6242927BB090009442F /* Resources */,
 				238CA6092926ADD70009442F /* Bindings */,
-				238CA5F42922A43D0009442F /* View */,
 				238CA5FE292696D10009442F /* Services */,
+				238CA5F42922A43D0009442F /* View */,
 				238CA5F32922A4370009442F /* Model */,
 				238CA5F52922A4430009442F /* ViewModel */,
 				235AAB1B2922A3EC008B4E21 /* Assets.xcassets */,
@@ -137,9 +137,6 @@
 				238CA6162926AF510009442F /* LoadingView.swift */,
 				238CA6182926AF760009442F /* MovieDetailView.swift */,
 				238CA61A2926AF9E0009442F /* MovieSearchView.swift */,
-				238CA61C2926AFEF0009442F /* ActivityIndicatorView.swift */,
-				238CA61E2926B00F0009442F /* SafariView.swift */,
-				238CA6202926B0290009442F /* SearchBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -147,6 +144,9 @@
 		238CA5F52922A4430009442F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				238CA61C2926AFEF0009442F /* ActivityIndicatorView.swift */,
+				238CA61E2926B00F0009442F /* SafariView.swift */,
+				238CA6202926B0290009442F /* SearchBar.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";

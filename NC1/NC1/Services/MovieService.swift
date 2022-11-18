@@ -18,9 +18,9 @@ enum MovieListEndpoint: String, CaseIterable, Identifiable {
     
     var id: String { rawValue }
     case nowPlaying = "now_playing"
-    case upcoming
+    case upcoming = "upcoming"
     case topRated = "top_rated"
-    case popular
+    case popular = "popular"
     
     var description: String {
         switch self {

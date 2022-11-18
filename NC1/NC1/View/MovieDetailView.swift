@@ -38,6 +38,7 @@ struct MovieDetailListView: View {
     
     var body: some View {
         List {
+            
             MovieDetailImage(imageLoader: imageLoader, imageURL: self.movie.backdropURL)
                 .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             

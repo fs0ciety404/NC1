@@ -71,7 +71,6 @@ struct MovieListView: View {
                 
                 
             }
-            .navigationBarTitle("TV Time Clone")
         }
         .onAppear {
             self.nowPlayingState.loadMovies(with: .nowPlaying)
