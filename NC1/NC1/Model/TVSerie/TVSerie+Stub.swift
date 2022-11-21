@@ -15,7 +15,7 @@ extension TVSerie {
         return response!.results
     }
     
-    static var stubbedMovie: TVSerie {
+    static var stubbedTVSerie: TVSerie {
         stubbedTVSeries[0]
     }
     

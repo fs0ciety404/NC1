@@ -23,15 +23,18 @@ struct TVSerie: Decodable, Identifiable, Hashable {
     }
     
     let id: Int
-    let title: String
+    let name: String
     let backdropPath: String?
     let posterPath: String?
+    let firstAirDate: String
+    let inProduction: Bool?
+    let lastAirDate: String?
+    let lastEpisodeToAir: LastEpisodeToAir?
+    let numberOfSeasons: Int?
     let overview: String
+    let seasons: [Season]?
     let voteAverage: Double
     let voteCount: Int
-    let runtime: Int?
-    let releaseDate: String?
-    
     let genres: [TVGenre]?
     let credits: TVCredit?
     let videos: TVVideoResponse?
@@ -49,12 +52,11 @@ struct TVSerie: Decodable, Identifiable, Hashable {
         return formatter
     }()
     
-    var backdropURL: URL {
-        return URL(string: "https://image.tmdb.org/t/p/w500\(backdropPath ?? "")")!
-    }
-    
-    var posterURL: URL {
-        return URL(string: "https://image.tmdb.org/t/p/w500\(posterPath ?? "")")!
+    var durationText: String {
+        guard let runtime = self.numberOfSeasons, runtime > 0 else {
+            return "n/a"
+        }
+        return TVSerie.durationFormatter.string(from: TimeInterval(runtime * 60)) ?? "n/a"
     }
     
     var genreText: String {
@@ -76,18 +78,12 @@ struct TVSerie: Decodable, Identifiable, Hashable {
         return "\(ratingText.count)/10"
     }
     
-    var yearText: String {
-        guard let releaseDate = self.releaseDate, let date = Utils.dateFormatter.date(from: releaseDate) else {
-            return "n/a"
-        }
-        return TVSerie.yearFormatter.string(from: date)
+    var backdropURL: URL {
+        return URL(string: "https://image.tmdb.org/t/p/w500\(backdropPath ?? "")")!
     }
     
-    var durationText: String {
-        guard let runtime = self.runtime, runtime > 0 else {
-            return "n/a"
-        }
-        return TVSerie.durationFormatter.string(from: TimeInterval(runtime) * 60) ?? "n/a"
+    var posterURL: URL {
+        return URL(string: "https://image.tmdb.org/t/p/w500\(posterPath ?? "")")!
     }
     
     var cast: [TVCast]? {
@@ -116,9 +112,27 @@ struct TVSerie: Decodable, Identifiable, Hashable {
     
 }
 
+struct Season: Decodable {
+    let airDate: String?
+    let episodeCount, id: Int?
+    let name, overview: String?
+    let posterPath: String?
+    let seasonNumber: Int?
+}
+
+struct LastEpisodeToAir: Decodable {
+    let airDate: String?
+    let episodeNumber, id: Int?
+    let name, overview, productionCode: String?
+    let runtime, seasonNumber, showID: Int?
+    let stillPath: String?
+    let voteAverage, voteCount: Int?
+}
+
 struct TVGenre: Decodable {
     
     let name: String
+    
 }
 
 struct TVCredit: Decodable {

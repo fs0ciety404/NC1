@@ -1,67 +1,69 @@
 //
-//  MovieDetailView.swift
+//  TvSerieDetailView.swift
 //  NC1
 //
-//  Created by Davide Ragosta on 17/11/22.
+//  Created by Davide Ragosta on 21/11/22.
 //
 
 import SwiftUI
 
-struct MovieDetailView: View {
+struct TvSerieDetailView: View {
     
-    let movieId: Int
-    @ObservedObject private var movieDetailState = MovieDetailState()
+    let tvserieId: Int
+    @ObservedObject private var tvserieDetailState = TvSerieDetailState()
     
     var body: some View {
         ZStack {
-            LoadingView(isLoading: self.movieDetailState.isLoading, error: self.movieDetailState.error) {
-                self.movieDetailState.loadMovie(id: self.movieId)
+            LoadingView(isLoading: self.tvserieDetailState.isLoading, error: self.tvserieDetailState.error) {
+                self.tvserieDetailState.loadTvSerie(id: self.tvserieId)
             }
             
-            if movieDetailState.movie != nil {
-                MovieDetailListView(movie: self.movieDetailState.movie!)
+            if tvserieDetailState.tvserie != nil {
+                TvSerieDetailListView(tvserie: self.tvserieDetailState.tvserie!)
                 
             }
         }
-        .navigationBarTitle(movieDetailState.movie?.title ?? "")
+        .navigationBarTitle(tvserieDetailState.tvserie?.name ?? "")
         .onAppear {
-            self.movieDetailState.loadMovie(id: self.movieId)
+            self.tvserieDetailState.loadTvSerie(id: self.tvserieId)
         }
     }
 }
 
-struct MovieDetailListView: View {
+struct TvSerieDetailListView: View {
     
-    let movie: Movie
-    @State private var selectedTrailer: MovieVideo?
+    let tvserie: TVSerie
+    @State private var selectedTrailer: TVVideo?
     let imageLoader = ImageLoader()
     
     var body: some View {
         List {
             
-            MovieDetailImage(imageLoader: imageLoader, imageURL: self.movie.backdropURL)
+            TvSerieDetailImage(imageLoader: imageLoader, imageURL: self.tvserie.backdropURL)
                 .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             
             HStack {
-                Text(movie.genreText).font(.headline)
+                Text(tvserie.genreText)
                 Text("·")
-                Text(movie.yearText)
-                Text(movie.durationText)
+                Text(tvserie.durationText)
             }
             
-            Text(movie.overview)
+            Text(tvserie.overview)
+            
             HStack {
-                if !movie.ratingText.isEmpty {
-                    Text(movie.ratingText).foregroundColor(.yellow)
+                if !tvserie.ratingText.isEmpty {
+                    Text(tvserie.ratingText).foregroundColor(.yellow)
                 }
-                Text(movie.scoreText)
+                Text(tvserie.scoreText)
             }
+            
+            Divider()
             
             HStack(alignment: .top, spacing: 4) {
-                if movie.cast != nil && movie.cast!.count > 0 {
+                if tvserie.cast != nil && tvserie.cast!.count > 0 {
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Cast").font(.headline)
-                        ForEach(self.movie.cast!.prefix(9)) { cast in
+                        ForEach(self.tvserie.cast!.prefix(9)) { cast in
                             Text(cast.name)
                         }
                     }
@@ -70,27 +72,27 @@ struct MovieDetailListView: View {
                     
                 }
                 
-                if movie.crew != nil && movie.crew!.count > 0 {
+                if tvserie.crew != nil && tvserie.crew!.count > 0 {
                     VStack(alignment: .leading, spacing: 4) {
-                        if movie.directors != nil && movie.directors!.count > 0 {
+                        if tvserie.directors != nil && tvserie.directors!.count > 0 {
                             Text("Regista(i)").font(.headline)
-                            ForEach(self.movie.directors!.prefix(2)) { crew in
+                            ForEach(self.tvserie.directors!.prefix(2)) { crew in
                                 Text(crew.name)
                             }
                         }
                         
-                        if movie.producers != nil && movie.producers!.count > 0 {
+                        if tvserie.producers != nil && tvserie.producers!.count > 0 {
                             Text("Prodttore(i)").font(.headline)
                                 .padding(.top)
-                            ForEach(self.movie.producers!.prefix(2)) { crew in
+                            ForEach(self.tvserie.producers!.prefix(2)) { crew in
                                 Text(crew.name)
                             }
                         }
                         
-                        if movie.screenWriters != nil && movie.screenWriters!.count > 0 {
+                        if tvserie.screenWriters != nil && tvserie.screenWriters!.count > 0 {
                             Text("Sceneggiatore(i)").font(.headline)
                                 .padding(.top)
-                            ForEach(self.movie.screenWriters!.prefix(2)) { crew in
+                            ForEach(self.tvserie.screenWriters!.prefix(2)) { crew in
                                 Text(crew.name)
                             }
                         }
@@ -99,10 +101,12 @@ struct MovieDetailListView: View {
                 }
             }
             
-            if movie.youtubeTrailers != nil && movie.youtubeTrailers!.count > 0 {
+            Divider()
+            
+            if tvserie.youtubeTrailers != nil && tvserie.youtubeTrailers!.count > 0 {
                 Text("Trailers").font(.headline)
                 
-                ForEach(movie.youtubeTrailers!) { trailer in
+                ForEach(tvserie.youtubeTrailers!) { trailer in
                     Button(action: {
                         self.selectedTrailer = trailer
                     }) {
@@ -122,7 +126,7 @@ struct MovieDetailListView: View {
     }
 }
 
-struct MovieDetailImage: View {
+struct TvSerieDetailImage: View {
     
     @ObservedObject var imageLoader: ImageLoader
     let imageURL: URL
@@ -142,11 +146,12 @@ struct MovieDetailImage: View {
     }
 }
 
-struct MovieDetailView_Previews: PreviewProvider {
+struct TvSerieDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            MovieDetailView(movieId: Movie.stubbedMovie.id)
+            TvSerieDetailView(tvserieId: Movie.stubbedMovie.id)
         }
     }
 }
+
 

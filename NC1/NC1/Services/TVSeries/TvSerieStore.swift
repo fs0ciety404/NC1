@@ -18,7 +18,7 @@ class TvSerieStore: TVSerieService {
     private let jsonDecoder = Utils.jsonDecoder
     
     func fetchTVs(from endpoint: TVSerieListEndpoint, completion: @escaping (Result<TvSerieResponse, TVSerieError>) -> ()) {
-        guard let url = URL(string: "\(baseAPIURL)/movie/\(endpoint.rawValue)") else {
+        guard let url = URL(string: "\(baseAPIURL)/tv/\(endpoint.rawValue)") else {
             completion(.failure(.invalidEndpoint))
             return
         }
@@ -26,7 +26,7 @@ class TvSerieStore: TVSerieService {
     }
     
     func fetchTV(id: Int, completion: @escaping (Result<TVSerie, TVSerieError>) -> ()) {
-        guard let url = URL(string: "\(baseAPIURL)/movie/\(id)") else {
+        guard let url = URL(string: "\(baseAPIURL)/tv/\(id)") else {
             completion(.failure(.invalidEndpoint))
             return
         }
@@ -37,7 +37,7 @@ class TvSerieStore: TVSerieService {
     }
     
     func searchTV(query: String, completion: @escaping (Result<TvSerieResponse, TVSerieError>) -> ()) {
-        guard let url = URL(string: "\(baseAPIURL)/search/movie") else {
+        guard let url = URL(string: "\(baseAPIURL)/search/tv") else {
             completion(.failure(.invalidEndpoint))
             return
         }

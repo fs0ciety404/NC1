@@ -19,15 +19,15 @@ protocol TVSerieService {
 enum TVSerieListEndpoint: String, CaseIterable, Identifiable {
     
     var id: String { rawValue }
-    case nowPlaying = "now_playing"
-    case upcoming = "upcoming"
+    case nowPlaying = "airing_today"
+    case latest = "latest"
     case topRated = "top_rated"
     case popular = "popular"
     
     var description: String {
         switch self {
             case .nowPlaying: return "Now Playing"
-            case .upcoming: return "Upcoming"
+            case .latest: return "Latest"
             case .topRated: return "Top Rated"
             case .popular: return "Popular"
         }

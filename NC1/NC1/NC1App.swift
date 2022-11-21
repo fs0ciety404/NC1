@@ -21,6 +21,15 @@ struct NC1App: App {
                     }
                     .tag(0)
                 
+                TvSerieListView()
+                    .tabItem {
+                        VStack {
+                            Image(systemName: "tv")
+                            Text("Tv Series")
+                        }
+                    }
+                    .tag(1)
+                
                 MovieSearchView()
                     .tabItem {
                         VStack {
@@ -28,7 +37,7 @@ struct NC1App: App {
                             Text("Search")
                         }
                     }
-                    .tag(1)
+                    .tag(2)
                 
             }
             

@@ -9,7 +9,7 @@ import SwiftUI
 
 class TvSerieListState: ObservableObject {
     
-    @Published var tvserie: [TVSerie]?
+    @Published var tvseries: [TVSerie]?
     @Published var isLoading: Bool = false
     @Published var error: NSError?
 
@@ -20,14 +20,14 @@ class TvSerieListState: ObservableObject {
     }
     
     func loadTvSeries(with endpoint: TVSerieListEndpoint) {
-        self.tvserie = nil
+        self.tvseries = nil
         self.isLoading = true
         self.tvSerieService.fetchTVs(from: endpoint) { [weak self] (result) in
             guard let self = self else { return }
             self.isLoading = false
             switch result {
             case .success(let response):
-                self.tvserie = response.results
+                self.tvseries = response.results
                 
             case .failure(let error):
                 self.error = error as NSError
