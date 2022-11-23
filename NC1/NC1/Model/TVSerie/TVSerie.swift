@@ -45,6 +45,11 @@ struct TVSerie: Decodable, Identifiable, Hashable {
         return formatter
     }()
     
+    static private let seasonFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        return formatter
+    }()
+    
     static private let durationFormatter: DateComponentsFormatter = {
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .full
@@ -56,7 +61,7 @@ struct TVSerie: Decodable, Identifiable, Hashable {
         guard let runtime = self.numberOfSeasons, runtime > 0 else {
             return "n/a"
         }
-        return TVSerie.durationFormatter.string(from: TimeInterval(runtime * 60)) ?? "n/a"
+        return TVSerie.seasonFormatter.string(from: TimeInterval(runtime * 1) as NSNumber) ?? "n/a"
     }
     
     var genreText: String {
@@ -113,10 +118,7 @@ struct TVSerie: Decodable, Identifiable, Hashable {
 }
 
 struct Season: Decodable {
-    let airDate: String?
-    let episodeCount, id: Int?
-    let name, overview: String?
-    let posterPath: String?
+
     let seasonNumber: Int?
 }
 

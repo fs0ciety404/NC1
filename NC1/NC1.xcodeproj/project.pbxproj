@@ -47,7 +47,8 @@
 		23CDF5EA292BBC2200C2D21C /* TvSerieBackdropCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CDF5E9292BBC2200C2D21C /* TvSerieBackdropCard.swift */; };
 		23CDF5EC292BBC6000C2D21C /* TvSerieBackdropCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CDF5EB292BBC6000C2D21C /* TvSerieBackdropCarouselView.swift */; };
 		23CDF5EE292BBC6D00C2D21C /* TvSeriePosterCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CDF5ED292BBC6D00C2D21C /* TvSeriePosterCarouselView.swift */; };
-		23CDF5F0292BD08900C2D21C /* tvseries_list.json in Resources */ = {isa = PBXBuildFile; fileRef = 23CDF5EF292BD08900C2D21C /* tvseries_list.json */; };
+		23E9C19E292E7BB30037AD44 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E9C19D292E7BB30037AD44 /* SplashScreenView.swift */; };
+		23E9C1A0292E7EF20037AD44 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E9C19F292E7EF20037AD44 /* TabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,7 +93,8 @@
 		23CDF5E9292BBC2200C2D21C /* TvSerieBackdropCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvSerieBackdropCard.swift; sourceTree = "<group>"; };
 		23CDF5EB292BBC6000C2D21C /* TvSerieBackdropCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvSerieBackdropCarouselView.swift; sourceTree = "<group>"; };
 		23CDF5ED292BBC6D00C2D21C /* TvSeriePosterCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvSeriePosterCarouselView.swift; sourceTree = "<group>"; };
-		23CDF5EF292BD08900C2D21C /* tvseries_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = tvseries_list.json; path = ../../../../../../Desktop/tvseries_list.json; sourceTree = "<group>"; };
+		23E9C19D292E7BB30037AD44 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		23E9C19F292E7EF20037AD44 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +224,8 @@
 		238CA5F42922A43D0009442F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				23E9C19D292E7BB30037AD44 /* SplashScreenView.swift */,
+				23E9C19F292E7EF20037AD44 /* TabView.swift */,
 				236AA56529285173001D35E2 /* LoadingView.swift */,
 				236AA56E29285180001D35E2 /* TV Series */,
 				236AA55D29285173001D35E2 /* Movie */,
@@ -262,7 +266,6 @@
 			isa = PBXGroup;
 			children = (
 				236AA57329290895001D35E2 /* tvseries_info.json */,
-				23CDF5EF292BD08900C2D21C /* tvseries_list.json */,
 				238CA6252927BB6B0009442F /* movie_info.json */,
 				238CA6262927BB6B0009442F /* movie_list.json */,
 				238CA6272927BB6B0009442F /* search_movie.json */,
@@ -353,7 +356,6 @@
 				238CA6282927BB6B0009442F /* movie_info.json in Resources */,
 				238CA6292927BB6B0009442F /* movie_list.json in Resources */,
 				238CA62A2927BB6B0009442F /* search_movie.json in Resources */,
-				23CDF5F0292BD08900C2D21C /* tvseries_list.json in Resources */,
 				235AAB1C2922A3EC008B4E21 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -372,6 +374,7 @@
 				236AA56A29285173001D35E2 /* MovieBackdropCard.swift in Sources */,
 				236AA56D29285173001D35E2 /* LoadingView.swift in Sources */,
 				236AA572292905FF001D35E2 /* TVSerie+Stub.swift in Sources */,
+				23E9C19E292E7BB30037AD44 /* SplashScreenView.swift in Sources */,
 				238CA6112926AE700009442F /* MovieSearchState.swift in Sources */,
 				236AA57829290AC9001D35E2 /* TvSerieStore.swift in Sources */,
 				23CDF5D62929117A00C2D21C /* TvSerieSearchState.swift in Sources */,
@@ -398,6 +401,7 @@
 				238CA5FD29268EA20009442F /* Movie.swift in Sources */,
 				23CDF5E4292BBBDF00C2D21C /* TvSerieDetailView.swift in Sources */,
 				236AA56B29285173001D35E2 /* MovieBackdropCarouselView.swift in Sources */,
+				23E9C1A0292E7EF20037AD44 /* TabView.swift in Sources */,
 				238CA6212926B0290009442F /* SearchBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

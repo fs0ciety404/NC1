@@ -15,8 +15,10 @@ struct MovieListView: View {
     @ObservedObject private var popularState = MovieListState()
     
     var body: some View {
-        NavigationView {
-            List {
+        
+        NavigationStack {
+            ScrollView{
+                
                 Group {
                     if nowPlayingState.movies != nil {
                         MoviePosterCarouselView(title: "Now Playing", movies: nowPlayingState.movies!)
@@ -68,17 +70,15 @@ struct MovieListView: View {
                 }
                 .listRowInsets(EdgeInsets(top: 8, leading: 0, bottom: 16, trailing: 0))
                 
-                
-                
+            }
+            .onAppear {
+                self.nowPlayingState.loadMovies(with: .nowPlaying)
+                self.upcomingState.loadMovies(with: .upcoming)
+                self.topRatedState.loadMovies(with: .topRated)
+                self.popularState.loadMovies(with: .popular)
             }
         }
-        .onAppear {
-            self.nowPlayingState.loadMovies(with: .nowPlaying)
-            self.upcomingState.loadMovies(with: .upcoming)
-            self.topRatedState.loadMovies(with: .topRated)
-            self.popularState.loadMovies(with: .popular)
-        }
-        
+        .ignoresSafeArea()
     }
 }
 

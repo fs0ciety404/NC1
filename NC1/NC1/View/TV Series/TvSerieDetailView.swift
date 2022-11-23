@@ -45,7 +45,7 @@ struct TvSerieDetailListView: View {
             HStack {
                 Text(tvserie.genreText)
                 Text("·")
-                Text(tvserie.durationText)
+                Text("S: " + tvserie.durationText )
             }
             
             Text(tvserie.overview)
