@@ -11,36 +11,7 @@ import SwiftUI
 struct NC1App: App {
     var body: some Scene {
         WindowGroup {
-            TabView {
-                MovieListView()
-                    .tabItem {
-                        VStack {
-                            Image(systemName: "tv")
-                            Text("Movies")
-                        }
-                    }
-                    .tag(0)
-                
-                TvSerieListView()
-                    .tabItem {
-                        VStack {
-                            Image(systemName: "tv")
-                            Text("Tv Series")
-                        }
-                    }
-                    .tag(1)
-                
-                MovieSearchView()
-                    .tabItem {
-                        VStack {
-                            Image(systemName: "magnifyingglass")
-                            Text("Search")
-                        }
-                    }
-                    .tag(2)
-                
-            }
-            
+            SplashScreenView()
         }
     }
 }
